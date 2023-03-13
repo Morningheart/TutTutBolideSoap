@@ -11,6 +11,12 @@ class HelloWorldService(ServiceBase):
     @rpc(Integer, Integer, _returns=Integer)
     def add(ctx, a, b):
         return a + b
+    
+    @rpc(Integer, Integer, Integer, _returns=Integer)
+    def get_traject_duration(ctx, dist, tpsRech, nbArr):
+        return int(dist*.6) + nbArr*tpsRech
+
+        
 
 application = Application([HelloWorldService], 'spyne.examples.hello.soap',
 in_protocol=Soap11(validator='lxml'),
